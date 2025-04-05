@@ -1,4 +1,8 @@
 @import "tailwindcss";
 @theme{
     --color-primary:#FF4D26;
+    --color-secoundary:#8890AA;
+}
+.custom-container{
+    @apply max-w-7xl mx-auto px-2
 }
