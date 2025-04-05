@@ -9,6 +9,9 @@
 .button{
     @apply py-1.5 px-8 rounded-full cursor-pointer transition
 }
+
+
+/* Custom CSS */
 #headerTextContainer{
     animation: fadeIn 2s;
 }

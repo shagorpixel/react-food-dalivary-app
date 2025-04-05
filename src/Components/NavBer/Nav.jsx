@@ -72,7 +72,7 @@ const Nav = () => {
                 <span></span>
                 </div>
                 {/* Mobile Menu Items  */}
-                <div className={`h-screen flex items-center justify-center bg-black/80 text-white w-full absolute left-0 top-0 md:hidden text-center transition ${isMenuOpen?'translate-x-0':'translate-x-full'}`}>
+                <div className={`h-screen flex items-center justify-center bg-black/80 text-white w-full absolute left-0 top-0 md:hidden text-center transition transform ${isMenuOpen?'translate-x-0':'-translate-x-full'}`}>
                     <NavItems toggleItems={toggleItems}></NavItems>
                     <span onClick={toggleItems} className=' text-4xl absolute right-1 top-4 cursor-pointer'><IoCloseOutline /></span>
                 </div>
