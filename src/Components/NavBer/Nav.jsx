@@ -61,7 +61,7 @@ const Nav = () => {
     const [isMenuOpen,setIsMenuOpen] = useState(false);
     const toggleItems = ()=>setIsMenuOpen(prev=>!prev);
     return (
-        <nav className=' py-4 relative'>
+        <nav className=' py-6 relative'>
             <div className=' flex justify-between items-center custom-container'>
                 <div>
                 <Link to='/'><img src={assets.logo} alt="" /></Link>
@@ -84,7 +84,7 @@ const Nav = () => {
                                 <div className=' size-5 bg-primary text-white text-xs flex items-center justify-center rounded-full absolute -right-4 -top-4'>10</div>
                             </div>
                         </Link>
-                        <button className=' py-1.5 px-8 ring ring-primary rounded-full cursor-pointer hover:bg-primary hover:text-white transition '>Sign In</button>
+                        <button className=' button ring ring-primary  hover:bg-primary hover:text-white  '>Sign In</button>
                 </div>
                 <span onClick={toggleItems} className=' text-2xl cursor-pointer md:hidden'><FaBars /></span>
             </div>

@@ -6,3 +6,17 @@
 .custom-container{
     @apply max-w-7xl mx-auto px-2
 }
+.button{
+    @apply py-1.5 px-8 rounded-full cursor-pointer transition
+}
+#headerTextContainer{
+    animation: fadeIn 2s;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
