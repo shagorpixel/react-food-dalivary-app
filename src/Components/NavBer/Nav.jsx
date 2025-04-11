@@ -3,8 +3,9 @@ import { CiSearch } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IoCloseOutline } from "react-icons/io5";
+import { storeContext } from '../../Contexts/StoreContextProvider';
 const NavItems = ({toggleItems}) => {
     const navList = [
        
@@ -35,7 +36,7 @@ const NavItems = ({toggleItems}) => {
                 navList.map((navList,index)=>
                     navList.name === "Sign In" || navList.name === "Cart"?
                 <li key={index} onClick={toggleItems} className='md:hidden block'>
-                    <NavLink
+                    <NavLink 
                     to={navList.path}
                     className={({ isActive}) =>
                         isActive ? "text-primary text-lg" : "text-lg"
@@ -57,7 +58,8 @@ const NavItems = ({toggleItems}) => {
     );
 };
 
-const Nav = () => {
+const Nav = ({setIsLoginOpen}) => {
+    const {totalItem} = useContext(storeContext);
     const [isMenuOpen,setIsMenuOpen] = useState(false);
     const toggleItems = ()=>setIsMenuOpen(prev=>!prev);
     return (
@@ -73,7 +75,7 @@ const Nav = () => {
                 </div>
                 {/* Mobile Menu Items  */}
                 <div className={`h-screen flex items-center justify-center bg-black/80 text-white w-full absolute left-0 top-0 md:hidden text-center transition transform ${isMenuOpen?'translate-x-0':'-translate-x-full'}`}>
-                    <NavItems toggleItems={toggleItems}></NavItems>
+                    <NavItems toggleItems={toggleItems} setIsLoginOpen={setIsLoginOpen}></NavItems>
                     <span onClick={toggleItems} className=' text-4xl absolute right-1 top-4 cursor-pointer'><IoCloseOutline /></span>
                 </div>
                 <div className=' hidden md:flex space-x-12 items-center'>
@@ -81,10 +83,13 @@ const Nav = () => {
                         <Link to='cart'>
                             <div className=' relative'>
                                 <span className=' text-2xl'><FaCartShopping /></span>
-                                <div className=' size-5 bg-primary text-white text-xs flex items-center justify-center rounded-full absolute -right-4 -top-4'>10</div>
+                                {
+                                totalItem>0 && 
+                                <div className=' size-5 bg-primary text-white text-xs flex items-center justify-center rounded-full absolute -right-4 -top-4'>{totalItem}</div>
+                                }
                             </div>
                         </Link>
-                        <button className=' button ring ring-primary  hover:bg-primary hover:text-white  '>Sign In</button>
+                        <button onClick={()=>setIsLoginOpen(true)} className=' button ring ring-primary  hover:bg-primary hover:text-white  '>Sign In</button>
                 </div>
                 <span onClick={toggleItems} className=' text-2xl cursor-pointer md:hidden'><FaBars /></span>
             </div>

@@ -6,7 +6,6 @@ import { storeContext } from "../../Contexts/StoreContextProvider";
 const FoodItem = ({food}) => {
     
     const {cartItems,addToCart,removeCart} =  useContext(storeContext);
-    console.log(cartItems)
     return ( 
         <div className=" rounded-md space-y-3 pb-5 shadow-lg">
             <div className=" relative">
